@@ -1,10 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Trip } from './Trip';
-
 export const TripsList = ({match, days, onStatusChange}) => { 
+    let trips
     const filter = match.params.filter;
-    const trips = filter ? days.filter( trip => trip.type === filter) : days;
+    switch(filter){
+        case "Pending":
+            trips = days.filter( trip => trip.status === "Pending")
+            break
+        case "Completed":
+            trips = days.filter(trip => trip.status === "Completed")
+            break
+        default:
+            trips = filter ? days.filter( trip => trip.type === filter) : days;
+    }
     return (
         <div className="trips-list">
             <h3>{filter ? filter : 'All'} Trips</h3>            
@@ -47,9 +56,9 @@ export const TripsList = ({match, days, onStatusChange}) => {
                     Tropics
 				</Link>
                 &#9679;
-                <Link to="/list/pending">Pending</Link>
+                <Link to="/list/Pending">Pending</Link>
                 &#9679;
-                <Link to="/list/completed">completed</Link>
+                <Link to="/list/Completed">Completed</Link>
             </div>            
         </div>
     )
