@@ -52,6 +52,10 @@ export class App extends React.Component {
         this.setState((prevState)=>({addTripMessage: !prevState.addTripMessage}))
     }
 
+    deleteTripMessage=()=>{
+        this.setState((prevState)=>({addTripMessage: !prevState.addTripMessage}))
+    }
+
     onStatusChange = changedStatus => {
         this.setState({status: changedStatus})
     }
@@ -98,6 +102,7 @@ export class App extends React.Component {
                                     {...props}
                                     newTrip={this.addTrip}
                                     addTripMessage={this.addTripMessage}
+                                    deleteTripMessage={this.deleteTripMessage}
                                     showMessage={addTripMessage}
                                 />
                             )} />

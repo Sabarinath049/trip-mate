@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const AddTrip = ({newTrip,addTripMessage,showMessage}) => {
+export const AddTrip = ({newTrip,addTripMessage,showMessage,deleteTripMessage}) => {
     let date, place, type;
     const submit = (e) => {
         e.preventDefault();
@@ -11,6 +11,9 @@ export const AddTrip = ({newTrip,addTripMessage,showMessage}) => {
         });
         date.value = place.value = type.value = '';
         addTripMessage()
+        setTimeout(() => {
+            deleteTripMessage()
+        }, 3000);
 
     }
     const message = showMessage ? "Trip Added Successfully !" : ' '
